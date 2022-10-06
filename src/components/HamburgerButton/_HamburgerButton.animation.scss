@@ -1,0 +1,115 @@
+@use "../../styles/utils/" as utils;
+
+@mixin frame($y, $angle, $width, $left) {
+  @include utils.transform($y: $y, $angle: $angle);
+  left: $left;
+  width: $width;
+}
+
+@keyframes animate-before {
+  0% {
+    @include frame(calc(var(--height) * -2), 0, var(--width), var(--padding-left));
+  }
+
+  25% {
+    @include frame(calc(var(--height) * -2), 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  50% {
+    @include frame(-50%, 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  75% {
+    @include frame(-50%, 45deg, var(--aux-width), var(--aux-padding-left));
+  }
+
+  100% {
+    @include frame(-50%, 45deg, var(--width), var(--padding-left));
+  }
+}
+
+@keyframes animate-before-reversed {
+  100% {
+    @include frame(calc(var(--height) * -2), 0, var(--width), var(--padding-left));
+  }
+
+  75% {
+    @include frame(calc(var(--height) * -2), 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  50% {
+    @include frame(-50%, 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  25% {
+    @include frame(-50%, 45deg, var(--aux-width), var(--aux-padding-left));
+  }
+
+  0% {
+    @include frame(-50%, 45deg, var(--width), var(--padding-left));
+  }
+}
+
+@keyframes animate-after {
+  0% {
+    @include frame(var(--height), 0, var(--width), var(--padding-left));
+  }
+
+  25% {
+    @include frame(var(--height), 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  50% {
+    @include frame(-50%, 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  75% {
+    @include frame(-50%, -45deg, var(--aux-width), var(--aux-padding-left));
+  }
+
+  100% {
+    @include frame(-50%, -45deg, var(--width), var(--padding-left));
+  }
+}
+
+@keyframes animate-after-reversed {
+  100% {
+    @include frame(var(--height), 0, var(--width), var(--padding-left));
+  }
+
+  75% {
+    @include frame(var(--height), 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  50% {
+    @include frame(-50%, 0, var(--aux-width), var(--aux-padding-left));
+  }
+
+  25% {
+    @include frame(-50%, -45deg, var(--aux-width), var(--aux-padding-left));
+  }
+
+  0% {
+    @include frame(-50%, -45deg, var(--width), var(--padding-left));
+  }
+}
+
+@keyframes change-shadow-light {
+  0% {
+    @include utils.gen-neumorphic-shadow(var(--clr-soft-shadow), var(--clr-dark-shadow), var(--button-size));
+  }
+
+  100% {
+    @include utils.gen-neumorphic-shadow(#514f89, #3c3b65, var(--button-size));
+  }
+}
+
+@keyframes change-shadow-dark {
+  0% {
+    @include utils.gen-neumorphic-shadow(#514f89, #3c3b65, var(--button-size));
+  }
+
+  100% {
+    @include utils.gen-neumorphic-shadow(var(--clr-soft-shadow), var(--clr-dark-shadow), var(--button-size));
+  }
+}

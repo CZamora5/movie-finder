@@ -1,0 +1,70 @@
+@forward "./HamburgerButton.animation.scss";
+@use "../../styles/utils/" as utils;
+
+.hamburger {
+  --button-size: 2rem;
+  --animation-play-state: paused;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: var(--button-size);
+  height: var(--button-size);
+  border-radius: calc(var(--button-size) * 0.15);
+  background-color: var(--clr-main);
+  cursor: pointer;
+  animation: change-shadow-light 0 linear forwards;
+
+  &.not-first-render {
+    animation-delay: 400ms;
+  }
+
+  &::before,
+  &::after {
+    --width: calc(var(--button-size) * 0.8);
+    --aux-width: calc(var(--button-size) * 0.16);
+    --padding-left: calc((var(--button-size) - var(--width)) * 0.5);
+    --aux-padding-left: calc((var(--button-size) - var(--aux-width)) * 0.5);
+    --height: 0.325rem;
+
+    content: "";
+    position: absolute;
+    left: var(--padding-left);
+    top: 50%;
+    width: var(--width);
+    height: var(--height);
+    border-radius: 100vw;
+    background-color: var(--clr-accent);
+  }
+
+  &::before {
+    @include utils.transform($y: calc(var(--height) * -2));
+    animation: animate-before-reversed 450ms linear forwards;
+    animation-play-state: var(--animation-play-state);
+  }
+
+  &::after {
+    @include utils.transform($y: var(--height));
+    animation: animate-after-reversed 450ms linear forwards;
+    animation-play-state: var(--animation-play-state);
+  }
+
+  &.active {
+    position: fixed;
+    z-index: 1;
+    animation: change-shadow-dark 0 linear forwards;
+    animation-delay: 450ms;
+
+    &::before {
+      animation: animate-before 450ms linear forwards;
+    }
+
+    &::after {
+      animation: animate-after 450ms linear forwards;
+    }
+  }
+
+  @include utils.breakpoints(sm) {
+    display: none;
+  }
+}
