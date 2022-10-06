@@ -1,0 +1,11 @@
+@use "../utils/breakpoints.scss" as utils;
+
+.container {
+  width: 100%;
+
+  @include utils.breakpoints(sm) {
+    width: 94%;
+    max-width: 90rem;
+    margin: 0 auto;
+  }
+}
