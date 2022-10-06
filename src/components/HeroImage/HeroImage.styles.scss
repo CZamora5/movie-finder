@@ -1,0 +1,44 @@
+.hero {
+  &__wrapper {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+    margin-top: -4rem;
+    margin-bottom: 2rem;
+
+    min-height: min(24rem, 80vh);
+
+    background-image: var(--url);
+    background-color: var(--clr-main);
+    background-blend-mode:soft-light;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__body {
+    justify-self: start;
+    max-width: min(80%, 48rem);
+  }
+
+  &__text {
+    margin-top: 0.75rem;
+  }
+
+  &__button {
+    font-size: 0.935rem;
+    color: var(--clr-soft-shadow);
+    padding: 0.75rem 1.5rem;
+    min-width: calc(min(80%, 48rem) * 0.55);
+    margin-top: 1.25rem;
+    background-color: var(--clr-aux);
+    border: none;
+    cursor: pointer;
+    transition: color 250ms, background-color 250ms;
+
+    &:hover {
+      color: white;
+      background-color: var(--clr-secondary);
+    }
+  }
+}
