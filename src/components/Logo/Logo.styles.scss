@@ -1,0 +1,34 @@
+.logo {
+  --width: 3rem;
+  position: relative;
+  width: var(--width);
+  height: var(--width);
+
+  &__wrapper {
+    padding: 0.5rem 0;
+  }
+
+  &::before, &::after {
+    --border: calc(var(--width) / 11);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--clr-main);
+    border: var(--border) solid var(--clr-secondary);
+  }
+
+  &::before {
+    width: 100%;
+    height: 100%;
+  }
+
+  &::after {
+    --aux: calc(var(--border) * 0.5);
+    width: calc(var(--width) * 0.41);
+    height: calc(var(--width) * 0.41);
+    box-shadow:
+      var(--aux) var(--aux) 0 var(--aux) var(--clr-main),
+      var(--border) var(--border) 0 var(--border) var(--clr-secondary);
+  }
+}
