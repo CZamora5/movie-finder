@@ -2,9 +2,8 @@
   position: relative;
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  // overflow-x: hidden;
 
   &__list {
     display: flex;

@@ -7,6 +7,7 @@ import { NavbarContext } from '../../contexts/NavbarContext.js';
 // Components
 import HamburgerButton from '../../components/HamburgerButton/HamburgerButton.js';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu.js';
+import Logo from '../../components/Logo/Logo.js';
 
 // Styles
 import './Navbar.styles.scss';
@@ -27,9 +28,7 @@ export default function Navbar({ size }) {
   return (
     <Fragment>
       <nav className="navbar container">
-        <div className="navbar__logo">
-          Carlos
-        </div>
+        <Logo />
         <div className="navbar__list">
           <HamburgerMenu size={size} >
             <NavLink to="/" end className={classList} tabIndex={tabIndex}>Home</NavLink>

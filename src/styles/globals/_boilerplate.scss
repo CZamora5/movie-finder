@@ -20,11 +20,12 @@ a {
   text-decoration: none;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 /* Global styles */
 body {
+  overflow-x: hidden;
   background-color: var(--clr-main);
+}
+
+body, button, input, select {
+  font-family: 'Open Sans', sans-serif;
 }
