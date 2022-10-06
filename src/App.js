@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+// Context provider
+import { NavbarProvider } from './contexts/NavbarContext.js';
+
+// Layout
+import Navbar from './layout/Navbar/Navbar';
+
+// Pages
+import Home from './pages/Home/Home.js';
+import Popular from './pages/Popular/Popular.js';
+import NowPlaying from './pages/NowPlaying/NowPlaying.js';
+
+// Styles
+import './styles/index.scss';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<NavbarProvider><Navbar size="3rem"></Navbar></NavbarProvider>}>
+        <Route path="popular" element={<Popular />} />
+        <Route path="now-playing" element={<NowPlaying />} />
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
