@@ -1,9 +1,17 @@
 import React, { useState, createContext, useEffect } from 'react';
 
+function convertRemToPixels(rem) {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
 export const NavbarContext = createContext({});
 
 export function NavbarProvider({ children }) {
-  const [state, setState] = useState({ firstRender: true, isActive: false, isSmallScreen: true });
+  const [state, setState] = useState({
+    firstRender: true,
+    isActive: false,
+    isSmallScreen: window.innerWidth < convertRemToPixels(36)
+  });
 
   function setIsActive() {
     setState(prevState => ({
@@ -14,28 +22,28 @@ export function NavbarProvider({ children }) {
   }
 
   useEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.contentRect.width >= 576 && state.isSmallScreen) {
-          setState(prevState => ({
-            ...prevState,
-            isSmallScreen: false
-          }));
-        } else if (entry.contentRect.width < 576 && !state.isSmallScreen) {
-          setState(prevState => ({
-            ...prevState,
-            isSmallScreen: true
-          }));
-        }
-      }
-    }, [state.isSmallScreen]);
+    function handleResize() {
+      const width = window.innerWidth;
 
-    resizeObserver.observe(document.body);
+      if (width >= convertRemToPixels(36) && state.isSmallScreen) {
+        setState(prevState => ({
+          ...prevState,
+          isSmallScreen: false
+        }));
+      } else if (width < convertRemToPixels(36) && !state.isSmallScreen) {
+        setState(prevState => ({
+          ...prevState,
+          isSmallScreen: true
+        }));
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      resizeObserver.disconnect();
+      document.removeEventListener('resize', handleResize);
     }
-  });
+  }, [state.isSmallScreen]);
 
   return (
     <NavbarContext.Provider value={{ state, setIsActive }}>
