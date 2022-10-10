@@ -26,9 +26,11 @@ export const API = {
     return await fetch(endpoint).then(response => response.json());
   },
   getPoster(path) {
+    if (!path) return null;
     return `${IMAGE_BASE_URL}${POSTER_SIZE}${path}`;
   },
   getBackdrop(path) {
+    if (!path) return null;
     return `${IMAGE_BASE_URL}${BACKDROP_SIZE}${path}`;
   }
 };

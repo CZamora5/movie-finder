@@ -16,7 +16,6 @@ export default function Popular() {
       try {
         const data = await API.fetchMovies();
         setMovies(data.results);
-        console.log(data.results[0])
       } catch (err) {
         console.error(err);
       }
@@ -30,6 +29,7 @@ export default function Popular() {
       {
         mostPopular &&
           <HeroImage
+            id={mostPopular.id}
             overview={mostPopular.overview}
             title={mostPopular.title}
             image={API.getBackdrop(mostPopular.backdrop_path)}
@@ -41,6 +41,8 @@ export default function Popular() {
             return (
               <MovieCard
                 key={movie.id}
+                id={movie.id}
+                release={movie.release_date}
                 image={API.getPoster(movie.poster_path)}
                 title={movie.title}
                 rating={movie.vote_average}

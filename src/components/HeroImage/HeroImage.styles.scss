@@ -1,3 +1,5 @@
+@use "../../styles/utils/" as utils;
+
 .hero {
   &__wrapper {
     display: flex;
@@ -6,7 +8,7 @@
     margin-top: -4rem;
     margin-bottom: 2rem;
 
-    min-height: min(24rem, 80vh);
+    min-height: max(24rem, 80vh);
 
     background-image: var(--url);
     background-color: var(--clr-main);
@@ -22,6 +24,7 @@
   }
 
   &__text {
+    display: none;
     margin-top: 0.75rem;
   }
 
@@ -39,6 +42,40 @@
     &:hover {
       color: white;
       background-color: var(--clr-secondary);
+    }
+  }
+
+  @include utils.breakpoints(xs) {
+    &__text {
+      display: block;
+    }
+  }
+
+  @include utils.breakpoints(lg) {
+    &__heading {
+      font-size: 1.75rem;
+    }
+
+    &__text {
+      font-size: 1.25rem;
+    }
+
+    &__button {
+      font-size: 1rem;
+    }
+  }
+
+  @include utils.breakpoints(xl) {
+    &__heading {
+      font-size: 2rem;
+    }
+
+    &__text {
+      font-size: 1.4rem;
+    }
+
+    &__button {
+      font-size: 1.125rem;
     }
   }
 }
