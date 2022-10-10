@@ -9,8 +9,14 @@
   cursor: pointer;
 
   &:hover {
-    .movie-card__image {
-      transform: scale(1.05);
+    .movie-card {
+      &__image {
+        transform: scale(1.05);
+      }
+
+      &__title {
+        color: var(--clr-bright-blue);
+      }
     }
   }
 
@@ -33,6 +39,7 @@
 
   &__title {
     color: var(--clr-secondary);
+    font-size: 1rem;
   }
 
   &__release {

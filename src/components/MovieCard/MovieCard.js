@@ -33,7 +33,7 @@ export default function MovieCard(props) {
       <div className="movie-card__body">
         <div className="card__info">
           <h3 className="movie-card__title">{props.title}</h3>
-          <h4 className="movie-card__release">Release date: {props.release}</h4>
+          <h4 className="movie-card__release">{props.release}</h4>
         </div>
         <p className="movie-card__rating">{props.rating.toFixed(1)}</p>
       </div>

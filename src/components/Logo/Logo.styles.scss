@@ -12,34 +12,15 @@
 
   &__square {
     --length: calc(var(--width) * 0.5);
-    --border-width: calc(var(--width) * 0.09);
 
     width: var(--length);
     height: var(--length);
-    border-color: var(--clr-secondary);
+    border: calc(var(--width) * 0.1) solid var(--clr-secondary);
 
     &:nth-child(1) {
       --length: calc(var(--width) * 0.4);
       width: var(--length);
       height: var(--length);
-      border: var(--border-width) solid var(--clr-secondary);
-    }
-
-    &:nth-child(2) {
-      border: var(--border-width) solid var(--clr-secondary);
-      border-bottom: none;
-    }
-
-    &:nth-child(3) {
-      width: calc(var(--length) + var(--border-width));
-      border: var(--border-width) solid var(--clr-secondary);
-      border-right: none;
-    }
-
-    &:nth-child(4) {
-      width: calc(var(--length) - var(--border-width));
-      border-right: var(--border-width) solid var(--clr-secondary);
-      border-bottom: var(--border-width) solid var(--clr-secondary);
     }
   }
 }

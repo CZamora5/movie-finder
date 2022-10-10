@@ -10,7 +10,6 @@ export default function Logo() {
         <div className="logo__square"></div>
         <div className="logo__square"></div>
         <div className="logo__square"></div>
-        <div className="logo__square"></div>
       </div>
     </div>
   )
