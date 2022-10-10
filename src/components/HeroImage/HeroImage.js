@@ -1,10 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Styles
 import './HeroImage.styles.scss';
 
+// Image
+import background from '../../assets/background.jpg';
+
 export default function HeroImage(props) {
-  const url = `url(${props.image})`;
+  const url = `url(${props.image ?? background})`;
   const navigate = useNavigate();
 
   if (props.children)  {

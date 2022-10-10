@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 // Context provider
 import { NavbarProvider } from './contexts/NavbarContext.js';
+import { PageContextProvider } from './contexts/PageContext.js';
 
 // Layout
 import Navbar from './layout/Navbar/Navbar';
@@ -21,7 +22,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<NavbarProvider><Navbar size="3rem"></Navbar></NavbarProvider>}>
         <Route index element={<Home />} />
-        <Route path="popular" element={<Popular />} />
+        <Route path="popular" element={<PageContextProvider><Popular /></PageContextProvider>} />
         <Route path="now-playing" element={<NowPlaying />} />
         <Route path="movies/:movieId" element={<Movie />} />
       </Route>

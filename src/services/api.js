@@ -9,12 +9,12 @@ import {
 } from './api.config.js';
 
 export const API = {
-  fetchMovies: async (searchTerm) => {
-    const endpoint = searchTerm
-      ? `${SEARCH_BASE_URL}${searchTerm}`
-      : `${POPULAR_BASE_URL}`;
-    // ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
-    // : `${POPULAR_BASE_URL}&page=${page}`;
+  fetchMovies: async (page, searchTerm) => {
+    let endpoint = POPULAR_BASE_URL;
+
+    if (searchTerm) endpoint = `${SEARCH_BASE_URL}&search=${searchTerm}`;
+    if (page) endpoint += `&page=${page}`;
+
     return await fetch(endpoint).then(response => response.json());
   },
   fetchMovie: async movieId => {
