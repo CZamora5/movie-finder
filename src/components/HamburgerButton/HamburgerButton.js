@@ -16,7 +16,7 @@ export default function HamburgerButton({ size }) {
   }
 
   if (!state.firstRender) {
-    style['--animation-play-state'] = 'running';
+    style['--animation-duration'] = '450ms';
     className += ' not-first-render';
   }
 

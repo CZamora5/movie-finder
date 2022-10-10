@@ -93,23 +93,3 @@
     @include frame(-50%, -45deg, var(--width), var(--padding-left));
   }
 }
-
-@keyframes change-shadow-light {
-  0% {
-    @include utils.gen-neumorphic-shadow(var(--clr-soft-shadow), var(--clr-dark-shadow), var(--button-size));
-  }
-
-  100% {
-    @include utils.gen-neumorphic-shadow(#514f89, #3c3b65, var(--button-size));
-  }
-}
-
-@keyframes change-shadow-dark {
-  0% {
-    @include utils.gen-neumorphic-shadow(#514f89, #3c3b65, var(--button-size));
-  }
-
-  100% {
-    @include utils.gen-neumorphic-shadow(var(--clr-soft-shadow), var(--clr-dark-shadow), var(--button-size));
-  }
-}

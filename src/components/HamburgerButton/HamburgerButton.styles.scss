@@ -3,17 +3,18 @@
 
 .hamburger {
   --button-size: 2rem;
-  --animation-play-state: paused;
+  --animation-duration: 0
+  ;
 
   position: absolute;
   top: 0.5rem;
   right: 1rem;
+  z-index: 2;
   width: var(--button-size);
   height: var(--button-size);
   border-radius: calc(var(--button-size) * 0.15);
   background-color: var(--clr-main);
   cursor: pointer;
-  animation: change-shadow-light 0 linear forwards;
 
   &.not-first-render {
     animation-delay: 400ms;
@@ -40,19 +41,17 @@
   &::before {
     @include utils.transform($y: calc(var(--height) * -2));
     animation: animate-before-reversed 450ms linear forwards;
-    animation-play-state: var(--animation-play-state);
+    animation-duration: var(--animation-duration);
   }
 
   &::after {
     @include utils.transform($y: var(--height));
     animation: animate-after-reversed 450ms linear forwards;
-    animation-play-state: var(--animation-play-state);
+    animation-duration: var(--animation-duration);
   }
 
   &.active {
     position: fixed;
-    z-index: 1;
-    animation: change-shadow-dark 0 linear forwards;
     animation-delay: 450ms;
 
     &::before {
