@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 // Components
 import MovieCard from '../../components/MovieCard/MovieCard.js';
 import HeroImage from '../../components/HeroImage/HeroImage.js';
+import Pagination from '../../components/Pagination/Pagination.js';
 
 // Hooks
 import { usePageApiContext, usePageStateContext } from '../../contexts/PageContext.js';
@@ -13,13 +14,14 @@ import { API } from '../../services/api.js';
 export default function Popular() {
   const [movies, setMovies] = useState([]);
   const mostPopular = movies.length ? movies.at(0) : null;
-  const page = usePageStateContext();
+  const {page} = usePageStateContext();
   const pageApi = usePageApiContext();
 
   useEffect(() => {
     async function getMovies() {
       try {
         const data = await API.fetchMovies(page);
+        pageApi.setTotalPages(data.total_pages);
         setMovies(data.results);
       } catch (err) {
         console.error(err);
@@ -27,7 +29,7 @@ export default function Popular() {
     }
 
     getMovies();
-  }, [page]);
+  }, [page, pageApi]);
 
   return (
     <main>
@@ -57,8 +59,7 @@ export default function Popular() {
         </div>
       </section>
 
-      <button onClick={() => pageApi.decrement()}>Anterior</button>
-      <button onClick={() => pageApi.increment()}>Siguiente</button>
+      <Pagination />
     </main>
   );
 }
