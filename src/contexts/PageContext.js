@@ -4,13 +4,13 @@ const PageApiContext = createContext(null);
 const PageStateContext = createContext(null);
 
 export function usePageStateContext() {
-  const page = useContext(PageStateContext);
+  const pageState = useContext(PageStateContext);
 
-  if (!page) {
+  if (!pageState) {
     throw new Error('There is no provider for page state context');
   }
 
-  return page;
+  return pageState;
 }
 
 export function usePageApiContext() {
@@ -25,6 +25,7 @@ export function usePageApiContext() {
 
 export function PageContextProvider({ children }) {
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const api = useMemo(() => {
     return {
@@ -32,12 +33,17 @@ export function PageContextProvider({ children }) {
         if (page <= 1) return;
         setPage(prevPage => prevPage - 1);
       },
-      increment: () => setPage(prevPage => prevPage + 1)
+      increment: () => {
+        if (page >= totalPages) return;
+        setPage(prevPage => prevPage + 1);
+      },
+      setTotalPages,
+      setPage
     };
-  }, [page]);
+  }, [page, totalPages]);
 
   return (
-    <PageStateContext.Provider value={page}>
+    <PageStateContext.Provider value={{ page, totalPages }}>
       <PageApiContext.Provider value={api}>
         {children}
       </PageApiContext.Provider>
