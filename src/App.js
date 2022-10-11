@@ -21,9 +21,9 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<NavbarProvider><Navbar size="3rem"></Navbar></NavbarProvider>}>
-        <Route index element={<Home />} />
+        <Route index element={<PageContextProvider><Home /></PageContextProvider>} />
         <Route path="popular" element={<PageContextProvider><Popular /></PageContextProvider>} />
-        <Route path="now-playing" element={<NowPlaying />} />
+        <Route path="now-playing" element={<PageContextProvider><NowPlaying /></PageContextProvider>} />
         <Route path="movies/:movieId" element={<Movie />} />
       </Route>
     </Routes>

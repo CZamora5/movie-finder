@@ -1,0 +1,11 @@
+.home {
+  &__wrapper {
+    padding: 3rem 0;
+  }
+
+  &__section {
+    +.home__section {
+      margin-top: 2rem;
+    }
+  }
+}

@@ -31,7 +31,7 @@ export default function MovieCard(props) {
     >
       <img className="movie-card__image" src={props.image ?? notFound} alt={props.title} />
       <div className="movie-card__body">
-        <div className="card__info">
+        <div className="movie-card__info">
           <h3 className="movie-card__title">{props.title}</h3>
           <h4 className="movie-card__release">{props.release}</h4>
         </div>
