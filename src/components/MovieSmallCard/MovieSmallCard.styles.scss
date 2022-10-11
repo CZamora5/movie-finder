@@ -1,16 +1,11 @@
 .movie-sm-card {
   position: relative;
-  min-width: 12rem;
-  max-width: 100%;
+  // min-width: 12rem;
+  // max-width: 100%;
+  width: 5%;
   height: min-content;
   overflow: hidden;
   cursor: pointer;
-
-  // @for $i from 1 through 5 {
-  //   @media screen and (min-width: calc((14 + 13 * $i) * 1rem)) {
-  //     width: max(12rem, calc((100 / ($i + 1)) * 1%));
-  //   }
-  // }
 
   &__image {
     width: 100%;

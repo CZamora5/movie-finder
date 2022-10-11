@@ -7,7 +7,7 @@ import MovieCarousel from '../../components/MovieCarousel/MovieCarousel.js';
 // Api
 import { API } from '../../services/api.js';
 
-// Styles 
+// Styles
 import './Home.styles.scss';
 
 export default function Home() {
