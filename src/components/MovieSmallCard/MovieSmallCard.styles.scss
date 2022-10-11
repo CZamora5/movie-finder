@@ -1,0 +1,54 @@
+.movie-sm-card {
+  position: relative;
+  min-width: 12rem;
+  max-width: 100%;
+  height: min-content;
+  overflow: hidden;
+  cursor: pointer;
+
+  // @for $i from 1 through 5 {
+  //   @media screen and (min-width: calc((14 + 13 * $i) * 1rem)) {
+  //     width: max(12rem, calc((100 / ($i + 1)) * 1%));
+  //   }
+  // }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__body {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.5rem;
+    background-color: rgb(var(--clr-secondary-rgb) / 0.75);
+    transform: translateX(100%);
+    transition: transform 250ms;
+  }
+
+  &__title {
+    color: var(--clr-main);
+    transform: translateY(20%);
+    opacity: 0;
+    transition: opacity 450ms, transform 400ms ease-in;
+  }
+
+  &:hover {
+    .movie-sm-card {
+      &__body {
+        transform: translateX(0);
+      }
+
+      &__title {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
