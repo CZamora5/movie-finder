@@ -1,8 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 
-function convertRemToPixels(rem) {
-  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-}
+// Utils
+import { convertRemToPixels } from '../utils/convertRemToPixels.js';
 
 export const NavbarContext = createContext({});
 

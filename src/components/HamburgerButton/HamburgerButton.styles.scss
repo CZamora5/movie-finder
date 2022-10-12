@@ -13,7 +13,7 @@
   width: var(--button-size);
   height: var(--button-size);
   border-radius: calc(var(--button-size) * 0.15);
-  background-color: var(--clr-main);
+  background-color: var(--clr-medium-blue);
   cursor: pointer;
 
   &.not-first-render {
