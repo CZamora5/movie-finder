@@ -8,4 +8,12 @@
       margin-top: 2rem;
     }
   }
+
+  &__genre-title {
+    color: rgb(var(--clr-secondary-rgb) / 0.8);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+    margin-bottom: 0.5rem;
+  }
 }

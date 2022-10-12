@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+// Contexts
+import { CarouselContextProvider, CarouselWrapperContextProvider } from '../../contexts/CarouselContext.js';
+
 // Components
 import MovieSmallCard from '../../components/MovieSmallCard/MovieSmallCard.js';
 import MovieCarousel from '../../components/MovieCarousel/MovieCarousel.js';
@@ -50,25 +53,29 @@ export default function Home() {
   return (
     <main className="container home">
       <div className="home__wrapper">
-        {
-          movies.map((movieGenre, index) => (
-            <section className="home__section" key={genres[index].id}>
-              <h2>{genres[index].name}</h2>
-              <MovieCarousel>
-                {movieGenre.map(movie => {
-                  return (
-                    <MovieSmallCard
-                      key={"g" + genres[index].id + "m" + movie.id}
-                      id={movie.id}
-                      image={API.getPoster(movie.poster_path)}
-                      title={movie.title}
-                    />
-                  );
-                })}
-              </MovieCarousel>
-            </section>
-          ))
-        }
+        <CarouselWrapperContextProvider>
+          {
+            movies.map((movieGenre, index) => (
+              <section className="home__section" key={genres[index].id}>
+                <h2 className="home__genre-title">{genres[index].name}</h2>
+                <CarouselContextProvider>
+                  <MovieCarousel>
+                    {movieGenre.map(movie => {
+                      return (
+                        <MovieSmallCard
+                          key={"g" + genres[index].id + "m" + movie.id}
+                          id={movie.id}
+                          image={API.getPoster(movie.poster_path)}
+                          title={movie.title}
+                        />
+                      );
+                    })}
+                  </MovieCarousel>
+                </CarouselContextProvider>
+              </section>
+            ))
+          }
+        </CarouselWrapperContextProvider>
       </div>
     </main>
   );
