@@ -21,10 +21,10 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<NavbarProvider><Navbar size="3rem"></Navbar></NavbarProvider>}>
-        <Route index element={<PageContextProvider><Home /></PageContextProvider>} />
+        <Route index element={<Home />} />
         <Route path="popular" element={<PageContextProvider><Popular /></PageContextProvider>} />
         <Route path="now-playing" element={<PageContextProvider><NowPlaying /></PageContextProvider>} />
-        <Route path="movies/:movieId" element={<Movie />} />
+        <Route path="movies/:movieId" element={<PageContextProvider><Movie /></PageContextProvider>} />
       </Route>
     </Routes>
   );
