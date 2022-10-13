@@ -26,7 +26,7 @@ export default function NowPlaying() {
 
   useEffect(() => {
     setPage(1);
-  }, []);
+  }, [setPage]);
 
   useEffect(() => {
     async function getMovies() {

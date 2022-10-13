@@ -50,7 +50,7 @@
 
   &__more-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, max(8rem, 50%));
+    grid-template-columns: 1;
     gap: 1rem;
     padding-top: 0.75rem;
 
@@ -93,13 +93,17 @@
 
   @include utils.breakpoints(xs) {
     padding: 1.5rem 1rem;
+
+    &__more-info {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @include utils.breakpoints(sm) {
     font-size: 0.9375rem;
 
     &__more-info {
-      grid-template-columns: repeat(auto-fit, minmax(8rem, 12rem));
+      grid-template-columns: repeat(2, min(15rem, 50%));
 
       &__content {
         font-size: 0.875rem;

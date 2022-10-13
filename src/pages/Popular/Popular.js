@@ -26,7 +26,7 @@ export default function Popular() {
 
   useEffect(() => {
     setPage(1);
-  }, []);
+  }, [setPage]);
 
   useEffect(() => {
     async function getMovies() {

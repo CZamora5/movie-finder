@@ -30,12 +30,18 @@ export default function Movie() {
   useEffect(() => {
     async function getData() {
       try {
-        const movieData = await API.fetchMovie(id);
-        console.log(movieData)
-        const credits = await API.fetchCredits(id);
+        const localStorageData = JSON.parse(localStorage.getItem(id));
+        if (!localStorageData) {
+          const movieData = await API.fetchMovie(id);
+          localStorage.setItem(id, JSON.stringify(movieData));
+          setMovie(movieData);
+        } else {
+          setMovie(localStorageData);
+        }
 
-        setMovie(movieData);
+        const credits = await API.fetchCredits(id);
         setCredits(credits);
+
         setPage(1);
       } catch (err) {
         console.error(err);
@@ -59,7 +65,7 @@ export default function Movie() {
     getData();
   }, [id, page, setTotalPages]);
 
-  if (!movie || !credits.cast) {
+  if (!movie || !credits?.cast) {
     return <></>;
   }
 
