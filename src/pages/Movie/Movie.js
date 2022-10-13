@@ -31,6 +31,7 @@ export default function Movie() {
     async function getData() {
       try {
         const movieData = await API.fetchMovie(id);
+        console.log(movieData)
         const credits = await API.fetchCredits(id);
 
         setMovie(movieData);
