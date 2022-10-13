@@ -12,8 +12,15 @@ export default function HeroImage(props) {
   const navigate = useNavigate();
 
   if (props.children)  {
+    const style = {
+      '--url': url,
+      '--bg-pos': props.bgPos || 'center',
+      '--content-pos': props.contentPos || 'flex-end',
+      '--bg-color': props.bgColor || 'var(--clr-main)',
+    };
+
     return (
-      <section className="hero__wrapper" style={{ "--url": url }}>
+      <section className="hero__wrapper" style={style}>
         <div className="container">
           {props.children}
         </div>
@@ -27,7 +34,9 @@ export default function HeroImage(props) {
         <div className="hero__body">
           <h1 className="hero__heading">{props.title}</h1>
           <p className="hero__text">{props.overview}</p>
-          <button onClick={() => navigate(`/movies/${props.id}`)} className="hero__button">See more</button>
+          <button onClick={() => navigate(`/movies/${props.id}`)} className="hero__button">
+            <span>See more</span>
+          </button>
         </div>
       </div>
     </section>

@@ -1,6 +1,77 @@
+@use "../../styles/utils/" as utils;
+
 .home {
   &__wrapper {
     padding: 3rem 0;
+  }
+
+  &__hero {
+    align-self: center !important;
+  }
+
+  &__title {
+    color: var(--clr-gold);
+
+    @include utils.breakpoints(xs) {
+      font-size: 1.25rem;
+    }
+
+    @include utils.breakpoints(sm) {
+      font-size: 1.5rem;
+    }
+
+    @include utils.breakpoints(md) {
+      font-size: 1.75rem;
+    }
+
+    @include utils.breakpoints(sm) {
+      font-size: 2rem;
+    }
+  }
+
+  &__search-button {
+    position: relative;
+    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    min-width: calc(min(60%, 24rem) * 0.55);
+    margin-top: 1.25rem;
+    background-color: rgb(230, 230, 239);
+    border: none;
+    cursor: pointer;
+
+    span {
+      position: relative;
+      font-size: 0.935rem;
+      font-weight: 600;
+      color: var(--clr-secondary);
+
+      @include utils.breakpoints(sm) {
+        font-size: 1rem;
+      }
+
+      @include utils.breakpoints(md) {
+        font-size: 1.125rem;
+      }
+
+      @include utils.breakpoints(sm) {
+        font-size: 1.25rem;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateY(100%);
+      background-color: var(--clr-soft-shadow);
+      transition: transform 250ms ease-in-out;
+    }
+
+    &:hover {
+      &::before {
+        transform: translateY(0);
+      }
+    }
   }
 
   &__section {

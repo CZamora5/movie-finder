@@ -3,7 +3,7 @@
 .hero {
   &__wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: var(--content-pos, flex-end);
     padding-bottom: 2rem;
     margin-top: -4rem;
     margin-bottom: 2rem;
@@ -11,11 +11,11 @@
     min-height: max(24rem, 80vh);
 
     background-image: var(--url);
-    background-color: var(--clr-main);
-    background-blend-mode:soft-light;
+    background-color: var(--bg-color, var(--clr-main));
+    background-blend-mode: soft-light;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: var(--bg-pos, center);
   }
 
   &__body {
@@ -29,19 +29,35 @@
   }
 
   &__button {
+    position: relative;
+    overflow: hidden;
     font-size: 0.935rem;
-    color: var(--clr-soft-shadow);
+    font-weight: 600;
+    color: var(--clr-gold);
     padding: 0.75rem 1.5rem;
     min-width: calc(min(80%, 48rem) * 0.55);
     margin-top: 1.25rem;
-    background-color: var(--clr-aux);
+    background-color: var(--clr-darkish-purple);
     border: none;
     cursor: pointer;
-    transition: color 250ms, background-color 250ms;
+
+    span {
+      position: relative;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateY(100%);
+      background-color: var(--clr-secondary);
+      transition: transform 250ms ease-in-out;
+    }
 
     &:hover {
-      color: white;
-      background-color: var(--clr-secondary);
+      &::before {
+        transform: translateY(0);
+      }
     }
   }
 
