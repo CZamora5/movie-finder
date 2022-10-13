@@ -1,0 +1,82 @@
+@use "../../styles/utils/" as utils;
+
+.details {
+  margin: 4.5rem 0 2rem;
+  color: var(--clr-main);
+  font-size: 0.875rem;
+  padding: 1rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgb(var(--clr-secondary-rgb) / 0.6);
+  background-color: rgba(89, 81, 97, 0.6);
+
+  &__heading {
+    color: var(--clr-gold);
+    font-size: 1.25rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.75rem;
+
+    span {
+      &:nth-of-type(2) {
+        display: none;
+      }
+    }
+
+    @include utils.breakpoints(xs) {
+      gap: 0.5rem;
+      flex-direction: row;
+
+      span {
+        &:nth-of-type(2) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include utils.breakpoints(xs) {
+    padding: 1.5rem 1rem;
+  }
+
+  @include utils.breakpoints(sm) {
+    font-size: 0.9375rem;
+
+    &__heading {
+      font-size: 1.375rem;
+    }
+
+    &__info {
+      font-size: 0.875rem;
+    }
+  }
+
+  @include utils.breakpoints(md) {
+    font-size: 1rem;
+
+    &__heading {
+      font-size: 1.5rem;
+    }
+
+    &__info {
+      font-size: 0.9375rem;
+    }
+  }
+
+  @include utils.breakpoints(lg) {
+    font-size: 1.0625rem;
+
+    &__heading {
+      font-size: 1.75rem;
+    }
+
+    &__info {
+      font-size: 1rem;
+    }
+  }
+}
