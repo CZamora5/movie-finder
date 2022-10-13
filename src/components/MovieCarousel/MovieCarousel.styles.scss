@@ -1,5 +1,5 @@
 .carousel {
-  --x-pos: 0%;
+  --x-pos: 0;
 
   position: relative;
   overflow-x: hidden;
@@ -40,7 +40,7 @@
     display: flex;
     width: var(--width);
     gap: var(--gap);
-    transition: transform 250ms;
+    transition: transform calc((250 + 50 * var(--x-pos)) * 1ms);
     transform: translateX(calc((var(--x-pos) * 5% + (var(--gap) * (var(--x-pos) + 1) / 20)) * -1));
 
     @for $i from 1 through 6 {

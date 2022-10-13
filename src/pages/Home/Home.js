@@ -14,50 +14,58 @@ import { API } from '../../services/api.js';
 
 // Images
 import homeImage from '../../assets/home.jpg';
+import homeImageLowRes from '../../assets/home-lower-quality.jpg';
 
 // Styles
 import './Home.styles.scss';
+import CarouselSkeleton from '../../components/CarouselSkeleton/CarouselSkeleton.js';
 
 export default function Home() {
-  const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function getGenres() {
+    async function getData() {
       try {
-        const data = await API.fetchGenres();
-        setGenres(data.genres);
+        setIsLoading(true);
+
+        // Fetching genre data
+        const genreData = await API.fetchGenres();
+        setGenres(genreData.genres);
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsLoading(false);
       }
     }
 
-    getGenres();
+    getData();
   }, []);
 
   useEffect(() => {
-    if (!genres) return;
-
-    async function getMovies() {
-      const ids = genres.map(genre => genre.id);
+    async function getData() {
       try {
+        if (!genres) return;
+        setIsLoading(true);
+
+        // Storing the id to fetch movies by id and finally setting the movies
+        const ids = genres.map(genre => genre.id);
         const data = await Promise.all(ids.map(id => API.fetchMoviesByGenre([id])));
         setMovies(data.map(genreData => genreData.results));
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsLoading(false);
       }
     }
 
-    getMovies();
+    getData();
   }, [genres]);
-
-  if (!movies) {
-    return <></>;
-  }
 
   return (
     <main className="home">
-      <HeroImage image={homeImage} bgPos="center right" bgColor="var(--clr-darkish-purple)" contentPos="center">
+      <HeroImage image={[homeImage, homeImageLowRes]} bgPos="center right" bgColor="var(--clr-darkish-purple)" contentPos="center">
         <section className="home__hero">
           <h1 className="home__title">We have the perfect movie for you, start exploring and find it!</h1>
           <button className="home__search-button">
@@ -69,25 +77,29 @@ export default function Home() {
         <div className="home__wrapper">
           <CarouselWrapperContextProvider>
             {
-              movies.map((movieGenre, index) => (
-                <section className="home__section" key={genres[index].id}>
-                  <Subheading text={genres[index].name} />
-                  <CarouselContextProvider>
-                    <MovieCarousel>
-                      {movieGenre.map(movie => {
-                        return (
-                          <MovieSmallCard
-                            key={"g" + genres[index].id + "m" + movie.id}
-                            id={movie.id}
-                            image={API.getPoster(movie.poster_path)}
-                            title={movie.title}
-                          />
-                        );
-                      })}
-                    </MovieCarousel>
-                  </CarouselContextProvider>
-                </section>
-              ))
+              isLoading ?
+                new Array(19).fill(0).map((_, index) => (
+                  <CarouselSkeleton key={index} index={index} />
+                ))
+                : movies.map((movieGenre, index) => (
+                  <section className="home__section" key={genres[index].id}>
+                    <Subheading text={genres[index].name} />
+                    <CarouselContextProvider>
+                      <MovieCarousel>
+                        {movieGenre.map(movie => {
+                          return (
+                            <MovieSmallCard
+                              key={"g" + genres[index].id + "m" + movie.id}
+                              id={movie.id}
+                              image={API.getPoster(movie.poster_path)}
+                              title={movie.title}
+                            />
+                          );
+                        })}
+                      </MovieCarousel>
+                    </CarouselContextProvider>
+                  </section>
+                ))
             }
           </CarouselWrapperContextProvider>
         </div>

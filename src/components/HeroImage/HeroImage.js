@@ -8,10 +8,16 @@ import './HeroImage.styles.scss';
 import background from '../../assets/background.jpg';
 
 export default function HeroImage(props) {
-  const url = `url(${props.image ?? background})`;
+  let url;
+  if (Array.isArray(props.image)) {
+    const urlArray = props.image.map(img => `url(${img})`);
+    url = urlArray.join(',');
+  } else {
+    url = `url(${props.image ?? background})`;
+  }
   const navigate = useNavigate();
 
-  if (props.children)  {
+  if (props.children) {
     const style = {
       '--url': url,
       '--bg-pos': props.bgPos || 'center',
