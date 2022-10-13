@@ -78,19 +78,25 @@ export function CarouselContextProvider({ children }) {
       moveLeft: () => {
         if (isFirstVisible) return;
 
-        setXPos(prevXPos => prevXPos - 1);
+        setXPos(prevXPos => {
+          const newXPos = Math.max(0, prevXPos - numberOfCardsVisible);
+          if (newXPos === 0) setIsFirstVisible(true);
+          return newXPos;
+        });
         setIsLastVisible(false);
-        if (xPos === 0) setIsFirstVisible(true);
       },
       moveRight: () => {
         if (isLastVisible) return;
 
-        setXPos(prevXPos => prevXPos + 1);
+        setXPos(prevXPos => {
+          const newXPos = Math.min(20 - numberOfCardsVisible, prevXPos + numberOfCardsVisible);
+          if (newXPos + numberOfCardsVisible >= 19) setIsLastVisible(true);
+          return newXPos;
+        });
         setIsFirstVisible(false);
-        if (xPos + numberOfCardsVisible >= 19) setIsLastVisible(true);
       }
     };
-  }, [isFirstVisible, isLastVisible, numberOfCardsVisible, xPos]);
+  }, [isFirstVisible, isLastVisible, numberOfCardsVisible]);
 
   return (
     <CarouselStateContext.Provider value={{ isFirstVisible, isLastVisible, xPos }}>
