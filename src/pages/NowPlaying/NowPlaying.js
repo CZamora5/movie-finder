@@ -22,14 +22,18 @@ export default function NowPlaying() {
   const [isLoading, setIsLoading] = useState(true);
   const newest = movies.length ? movies.at(0) : null;
   const { page } = usePageStateContext();
-  const pageApi = usePageApiContext();
+  const {setTotalPages, setPage} = usePageApiContext();
+
+  useEffect(() => {
+    setPage(1);
+  }, []);
 
   useEffect(() => {
     async function getMovies() {
       try {
         setIsLoading(true);
         const data = await API.fetchMoviesNowPlaying(page);
-        pageApi.setTotalPages(data.total_pages);
+        setTotalPages(data.total_pages);
         setMovies(data.results);
       } catch (err) {
         console.error(err);
@@ -39,7 +43,7 @@ export default function NowPlaying() {
     }
 
     getMovies();
-  }, [page, pageApi]);
+  }, [page, setTotalPages]);
 
   return (
     <main className="playing-page">

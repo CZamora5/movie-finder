@@ -36,15 +36,13 @@ export function PageContextProvider({ children }) {
       increment: () => {
         if (page >= totalPages) return;
         setPage(prevPage => prevPage + 1);
-      },
-      setTotalPages,
-      setPage
+      }
     };
   }, [page, totalPages]);
 
   return (
     <PageStateContext.Provider value={{ page, totalPages }}>
-      <PageApiContext.Provider value={api}>
+      <PageApiContext.Provider value={{api, setPage, setTotalPages}}>
         {children}
       </PageApiContext.Provider>
     </PageStateContext.Provider>

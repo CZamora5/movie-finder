@@ -9,7 +9,7 @@ import MovieCardSkeleton from '../../components/MovieCardSkeleton/MovieCardSkele
 import HeroImageSkeleton from '../../components/HeroImageSkeleton/HeroImageSkeleton.js';
 
 // Hooks
-import { usePageApiContext, usePageStateContext } from '../../contexts/PageContext.js';
+import { usePageStateContext, usePageApiContext } from '../../contexts/PageContext.js';
 
 // Api
 import { API } from '../../services/api.js';
@@ -22,14 +22,18 @@ export default function Popular() {
   const [isLoading, setIsLoading] = useState(true);
   const mostPopular = movies.length ? movies.at(0) : null;
   const { page } = usePageStateContext();
-  const pageApi = usePageApiContext();
+  const {setTotalPages, setPage} = usePageApiContext();
+
+  useEffect(() => {
+    setPage(1);
+  }, []);
 
   useEffect(() => {
     async function getMovies() {
       try {
         setIsLoading(true);
         const data = await API.fetchMovies(page);
-        pageApi.setTotalPages(data.total_pages);
+        setTotalPages(data.total_pages);
         setMovies(data.results);
       } catch (err) {
         console.error(err);
@@ -39,7 +43,7 @@ export default function Popular() {
     }
 
     getMovies();
-  }, [page, pageApi]);
+  }, [page, setTotalPages]);
 
   return (
     <main className="popular-page">
