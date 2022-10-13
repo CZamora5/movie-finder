@@ -13,7 +13,7 @@ import {
 async function fetchMovies(page, searchTerm) {
   let endpoint = POPULAR_BASE_URL;
 
-  if (searchTerm) endpoint = `${SEARCH_BASE_URL}&search=${searchTerm}`;
+  if (searchTerm) endpoint = `${SEARCH_BASE_URL}&query=${searchTerm}`;
   if (page) endpoint += `&page=${page}`;
 
   return await fetch(endpoint).then(response => response.json());

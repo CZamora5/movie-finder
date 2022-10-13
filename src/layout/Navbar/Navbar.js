@@ -34,6 +34,7 @@ export default function Navbar({ size }) {
             <NavLink to="/" end className={classList} tabIndex={tabIndex}>Home</NavLink>
             <NavLink to="/popular" className={classList} tabIndex={tabIndex}>Popular</NavLink>
             <NavLink to="/now-playing" className={classList} tabIndex={tabIndex}>Now Playing</NavLink>
+            <NavLink to="/search" className={classList} tabIndex={tabIndex}>Search</NavLink>
           </HamburgerMenu>
           <HamburgerButton size={size} />
         </div>

@@ -23,6 +23,7 @@ export default function HeroImage(props) {
       '--bg-pos': props.bgPos || 'center',
       '--content-pos': props.contentPos || 'flex-end',
       '--bg-color': props.bgColor || 'var(--clr-main)',
+      '--height': props.height || 'max(24rem, 80vh)',
     };
 
     return (

@@ -7,7 +7,7 @@
     padding-bottom: 2rem;
     margin-top: -4rem;
 
-    min-height: max(24rem, 80vh);
+    min-height: var(--height, max(24rem, 80vh));
 
     background-image: var(--url);
     background-color: var(--bg-color, var(--clr-main));

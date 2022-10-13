@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Contexts
 import { CarouselContextProvider, CarouselWrapperContextProvider } from '../../contexts/CarouselContext.js';
@@ -24,6 +25,7 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getData() {
@@ -68,7 +70,7 @@ export default function Home() {
       <HeroImage image={[homeImage, homeImageLowRes]} bgPos="center right" bgColor="var(--clr-darkish-purple)" contentPos="center">
         <section className="home__hero">
           <h1 className="home__title">We have the perfect movie for you, start exploring and find it!</h1>
-          <button className="home__search-button">
+          <button onClick={() => navigate("search")} className="home__search-button">
             <span>Search</span>
           </button>
         </section>

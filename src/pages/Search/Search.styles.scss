@@ -1,0 +1,99 @@
+@use "../../styles/utils/" as utils;
+
+.search-page {
+  &__content {
+    padding-top: 2rem;
+
+    &--skeleton {
+      padding-bottom: 3rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+
+    &-container {
+      width: 100%;
+      max-width: 60rem;
+      margin: 2rem auto 0;
+    }
+  }
+
+  &__input,
+  &__button {
+    font-size: 1rem;
+    border: none;
+
+    @include utils.breakpoints(sm) {
+      font-size: 1.125rem;
+    }
+
+    @include utils.breakpoints(md) {
+      font-size: 1.25rem;
+    }
+
+    @include utils.breakpoints(lg) {
+      font-size: 1.375rem;
+    }
+
+    @include utils.breakpoints(xl) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: calc(100% - 2.75rem);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+
+  &__button {
+    flex-shrink: 1;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+    background-color: var(--clr-darkish-purple);
+    color: var(--clr-gold);
+    cursor: pointer;
+
+    &-icon {
+      width: 1.25rem;
+      height: auto;
+    }
+
+    &-text {
+      display: none;
+    }
+
+    @include utils.breakpoints(sm) {
+      &-icon {
+        display: none;
+      }
+
+      &-text {
+        display: initial;
+      }
+    }
+  }
+
+  &__heading-skeleton {
+    height: 1.5rem;
+    width: min(80%, 8rem);
+    margin-bottom: 0.5rem;
+    background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    animation: load 800ms ease-in-out infinite alternate;
+
+    @keyframes load {
+      0% {
+        background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+      }
+
+      100% {
+        background-color: rgb(var(--clr-secondary-rgb) / 0.6);
+      }
+    }
+  }
+}
