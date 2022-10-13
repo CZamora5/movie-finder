@@ -34,6 +34,13 @@ async function fetchMovie(movieId) {
   return await fetch(endpoint).then(response => response.json());
 }
 
+async function fetchSimilarMovies(movieId, page) {
+  let endpoint = `${BASE_URL}movie/${movieId}/similar?api_key=${API_KEY}`;
+  if (page) endpoint += `&page=${page}`;
+
+  return await fetch(endpoint).then(response => response.json());
+}
+
 async function fetchCredits(movieId) {
   const endpoint = `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
   return await fetch(endpoint).then(response => response.json());
@@ -54,6 +61,7 @@ export const API = {
   fetchGenres,
   fetchMoviesByGenre,
   fetchMovie,
+  fetchSimilarMovies,
   fetchCredits,
   getBackdrop,
   getPoster
