@@ -19,6 +19,13 @@ async function fetchMovies(page, searchTerm) {
   return await fetch(endpoint).then(response => response.json());
 }
 
+async function fetchMoviesNowPlaying(page) {
+  let endpoint = `${BASE_URL}movie/now_playing?api_key=${API_KEY}`;
+  if (page) endpoint += `&page=${page}`;
+
+  return await fetch(endpoint).then(response => response.json());
+}
+
 async function fetchGenres() {
   let endpoint = GENRES_BASE_URL;
   return await fetch(endpoint).then(response => response.json());
@@ -58,6 +65,7 @@ function getBackdrop(path) {
 
 export const API = {
   fetchMovies,
+  fetchMoviesNowPlaying,
   fetchGenres,
   fetchMoviesByGenre,
   fetchMovie,

@@ -47,7 +47,7 @@ export default function Popular() {
         isLoading
           ? <>
             <HeroImageSkeleton />
-            <section className="popular-page__content">
+            <section className="popular-page__content popular-page__content--skeleton">
               <div className="container">
                 <div className="popular-page__heading-skeleton" />
                 <div className="popular-page__grid grid">

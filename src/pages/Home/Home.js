@@ -77,8 +77,8 @@ export default function Home() {
         <div className="home__wrapper">
           <CarouselWrapperContextProvider>
             {
-              isLoading ?
-                new Array(19).fill(0).map((_, index) => (
+              isLoading
+                ? new Array(19).fill(0).map((_, index) => (
                   <CarouselSkeleton key={index} index={index} />
                 ))
                 : movies.map((movieGenre, index) => (
