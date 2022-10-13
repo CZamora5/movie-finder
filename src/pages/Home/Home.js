@@ -7,6 +7,7 @@ import { CarouselContextProvider, CarouselWrapperContextProvider } from '../../c
 import HeroImage from '../../components/HeroImage/HeroImage.js';
 import MovieSmallCard from '../../components/MovieSmallCard/MovieSmallCard.js';
 import MovieCarousel from '../../components/MovieCarousel/MovieCarousel.js';
+import Subheading from '../../components/Subheading/Subheading.js';
 
 // Api
 import { API } from '../../services/api.js';
@@ -70,7 +71,7 @@ export default function Home() {
             {
               movies.map((movieGenre, index) => (
                 <section className="home__section" key={genres[index].id}>
-                  <h2 className="home__genre-title">{genres[index].name}</h2>
+                  <Subheading text={genres[index].name} />
                   <CarouselContextProvider>
                     <MovieCarousel>
                       {movieGenre.map(movie => {

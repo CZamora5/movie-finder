@@ -1,6 +1,6 @@
 .movie-sm-card {
   position: relative;
-  width: 5%;
+  width: var(--width, 5%);
   overflow: hidden;
   cursor: pointer;
 

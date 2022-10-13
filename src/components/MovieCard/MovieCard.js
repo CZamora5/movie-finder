@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 // Image
 import notFound from '../../assets/no-image.jpg';
 
+// Utils
+import { formatDate } from '../../utils/formatDate';
+
 // Styles
 import './MovieCard.styles.scss';
 
@@ -33,7 +36,7 @@ export default function MovieCard(props) {
       <div className="movie-card__body">
         <div className="movie-card__info">
           <h3 className="movie-card__title">{props.title}</h3>
-          <h4 className="movie-card__release">{props.release}</h4>
+          <h4 className="movie-card__release">{formatDate(props.release)}</h4>
         </div>
         <p className="movie-card__rating">{props.rating.toFixed(1)}</p>
       </div>
