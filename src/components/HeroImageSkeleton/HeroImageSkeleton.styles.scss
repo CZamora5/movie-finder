@@ -1,0 +1,73 @@
+@use "../../styles/utils/" as utils;
+
+.hero-skeleton {
+  &__wrapper {
+    display: flex;
+    align-items: var(--content-pos, flex-end);
+    padding-bottom: 2rem;
+    margin-top: -4rem;
+
+    min-height: max(24rem, 80vh);
+
+    background-color: var(--bg-color, var(--clr-main));
+  }
+
+  &__heading {
+    width: 90%;
+    height: 2rem;
+    background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    animation: load 800ms ease-in-out infinite alternate;
+  }
+
+  &__body {
+    justify-self: start;
+    max-width: min(80%, 48rem);
+  }
+
+  &__text {
+    width: 100%;
+    display: none;
+    margin-top: 0.75rem;
+
+    >* {
+      width: 100%;
+      height: 1rem;
+      background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+      animation: load 800ms ease-in-out infinite alternate;
+
+      &:last-child {
+        width: 55%;
+      }
+
+      +* {
+        margin-top: 0.25rem;
+      }
+    }
+  }
+
+  &__button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    width: calc(min(80%, 48rem) * 0.55);
+    margin-top: 1.25rem;
+    background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    animation: load 800ms ease-in-out infinite alternate;
+  }
+
+  @include utils.breakpoints(xs) {
+    &__text {
+      display: block;
+    }
+  }
+
+  @keyframes load {
+    0% {
+      background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    }
+
+    100% {
+      background-color: rgb(var(--clr-secondary-rgb) / 0.6);
+    }
+  }
+}
