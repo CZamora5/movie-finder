@@ -17,6 +17,27 @@
     background-position: var(--bg-pos, center);
   }
 
+  &__heading {
+    color: var(--clr-secondary);
+    line-height: 95%;
+
+    @include utils.breakpoints(xs) {
+      font-size: 1.25rem;
+    }
+
+    @include utils.breakpoints(sm) {
+      font-size: 1.5rem;
+    }
+
+    @include utils.breakpoints(md) {
+      font-size: 1.75rem;
+    }
+
+    @include utils.breakpoints(sm) {
+      font-size: 2rem;
+    }
+  }
+
   &__body {
     justify-self: start;
     max-width: min(80%, 48rem);
@@ -24,6 +45,7 @@
 
   &__text {
     display: none;
+    color: var(--clr-dark-blue);
     margin-top: 0.75rem;
   }
 
