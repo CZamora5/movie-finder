@@ -1,0 +1,84 @@
+@use "../../styles/utils/" as utils;
+
+.details-skeleton {
+  margin: 4.5rem 0 2rem;
+  border-radius: 0.25rem;
+  padding: 1rem 0.5rem;
+  background-color: rgba(89, 81, 97, 0.4);
+
+  &__heading {
+    color: var(--clr-gold);
+    width: min(16rem, 65%);
+    height: 1.8rem;
+    background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    animation: load 800ms ease-in-out infinite alternate;
+  }
+
+  &__info {
+    gap: 0.25rem;
+    margin: 0.5rem 0 0.75rem;
+    height: 0.9375rem;
+    width: min(40%, 8rem);
+    background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    animation: load 800ms ease-in-out infinite alternate;
+  }
+
+  &__text {
+    width: 100%;
+
+    &__line {
+      width: 100%;
+      height: 1.125rem;
+      background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+      animation: load 800ms ease-in-out infinite alternate;
+
+      &:last-child {
+        width: 75%;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+
+  &__directors {
+    margin-top: 0.75rem;
+    height: 1rem;
+    width: min(80%, 16rem);
+    background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    animation: load 800ms ease-in-out infinite alternate;
+  }
+
+  &__more-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 0.75rem;
+
+    &__box {
+      height: 3rem;
+      background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+      animation: load 800ms ease-in-out infinite alternate;
+    }
+  }
+
+  @include utils.breakpoints(xs) {
+    &__more-info {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include utils.breakpoints(sm) {
+    &__more-info {
+      grid-template-columns: repeat(2, min(15rem, 50%));
+    }
+  }
+
+  @keyframes load {
+    0% {
+      background-color: rgb(var(--clr-secondary-rgb) / 0.3);
+    }
+
+    100% {
+      background-color: rgb(var(--clr-secondary-rgb) / 0.6);
+    }
+  }
+}
