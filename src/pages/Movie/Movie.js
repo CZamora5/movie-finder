@@ -86,61 +86,63 @@ export default function Movie() {
           }
         />
       </HeroImage>
-      <section className="container movie-page__container">
-        <div className="movie-page__buttons">
-          <button
-            onClick={() => {
-              if (!displayingCast) setDisplayingCast(true);
-            }}
-            className={'movie-page__button' + (displayingCast ? ' active' : '')}
-          >
-            Cast
-          </button>
-          <button
-            className={'movie-page__button' + (!displayingCast ? ' active' : '')}
-            onClick={() => {
-              if (displayingCast) setDisplayingCast(false);
-            }}
-          >
-            Similar movies
-          </button>
-        </div>
-        <div className="movie-page__content">
-          {
-            displayingCast
-              ? <>
-                <Subheading text="Cast" />
-                <div className="grid movie-page__cast">
-                  {credits.cast.map((actor, idx) => {
-                    return (
-                      <ActorCard
-                        key={actor.id + "idx" + idx}
-                        image={API.getPoster(actor.profile_path)}
-                        name={actor.name}
-                        character={actor.character}
-                      />
-                    );
-                  })}
-                </div>
-              </>
-              : <>
-                <Subheading text="Similar movies" />
-                <div className="grid">
-                  {similarMovies.map(movie => {
-                    return (
-                      <MovieSmallCard
-                        key={movie.id}
-                        id={movie.id}
-                        image={API.getPoster(movie.poster_path)}
-                        title={movie.title}
-                        width="100%"
-                      />
-                    );
-                  })}
-                </div>
-                <Pagination />
-              </>
-          }
+      <section className="container">
+        <div className="movie-page__container">
+          <div className="movie-page__buttons">
+            <button
+              onClick={() => {
+                if (!displayingCast) setDisplayingCast(true);
+              }}
+              className={'movie-page__button' + (displayingCast ? ' active' : '')}
+            >
+              Cast
+            </button>
+            <button
+              className={'movie-page__button' + (!displayingCast ? ' active' : '')}
+              onClick={() => {
+                if (displayingCast) setDisplayingCast(false);
+              }}
+            >
+              Similar movies
+            </button>
+          </div>
+          <div className="movie-page__content">
+            {
+              displayingCast
+                ? <>
+                  <Subheading text="Cast" />
+                  <div className="grid movie-page__cast">
+                    {credits.cast.map((actor, idx) => {
+                      return (
+                        <ActorCard
+                          key={actor.id + "idx" + idx}
+                          image={API.getPoster(actor.profile_path)}
+                          name={actor.name}
+                          character={actor.character}
+                        />
+                      );
+                    })}
+                  </div>
+                </>
+                : <>
+                  <Subheading text="Similar movies" />
+                  <div className="grid">
+                    {similarMovies.map(movie => {
+                      return (
+                        <MovieSmallCard
+                          key={movie.id}
+                          id={movie.id}
+                          image={API.getPoster(movie.poster_path)}
+                          title={movie.title}
+                          width="100%"
+                        />
+                      );
+                    })}
+                  </div>
+                  <Pagination />
+                </>
+            }
+          </div>
         </div>
       </section>
     </main>
