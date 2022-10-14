@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // Context
 import { NavbarContext } from '../../contexts/NavbarContext.js';
@@ -39,7 +39,6 @@ export default function Navbar({ size }) {
           <HamburgerButton size={size} />
         </div>
       </nav>
-      <Outlet />
     </Fragment>
   )
 }

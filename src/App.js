@@ -2,11 +2,10 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Context provider
-import { NavbarProvider } from './contexts/NavbarContext.js';
 import { PageContextProvider } from './contexts/PageContext.js';
 
 // Layout
-import Navbar from './layout/Navbar/Navbar';
+import SharedLayout from './layout/SharedLayout/SharedLayout.js';
 
 // Pages
 import Home from './pages/Home/Home.js';
@@ -21,7 +20,7 @@ import './styles/index.scss';
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<NavbarProvider><Navbar size="3rem"></Navbar></NavbarProvider>}>
+      <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="popular" element={<PageContextProvider><Popular /></PageContextProvider>} />
         <Route path="now-playing" element={<PageContextProvider><NowPlaying /></PageContextProvider>} />

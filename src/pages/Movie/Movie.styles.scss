@@ -1,4 +1,8 @@
 .movie-page {
+  &.skeleton {
+    padding-bottom: 3rem;
+  }
+
   &__container {
     position: relative;
     padding-top: 2rem;

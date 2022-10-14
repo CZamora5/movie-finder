@@ -13,7 +13,7 @@ export default function HeroImageSkeleton(props) {
     };
 
     return (
-      <section className="hero-skeleton__wrapper">
+      <section className="hero-skeleton__wrapper" style={style}>
         <div className="container">
           {props.children}
         </div>

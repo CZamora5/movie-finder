@@ -76,7 +76,7 @@ export default function Movie() {
   }, [id, page, setTotalPages]);
 
   return (
-    <main className="movie-page">
+    <main className={'movie-page' + ((isLoading || !movie || !credits) ? ' skeleton' : '')}>
       {
         isLoading || !movie || !credits
           ? <HeroImageSkeleton contentPos="center">

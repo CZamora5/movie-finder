@@ -1,0 +1,34 @@
+@use "../../styles/utils/" as utils;
+
+.back-to-top {
+  &__button {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125rem 0.25rem;
+    border: none;
+    background-color: var(--clr-darkish-purple);
+    opacity: 0.5;
+    transition: opacity 150ms;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @include utils.breakpoints(sm) {
+      left: 3%;
+    }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: auto;
+    stroke: var(--clr-gold);
+  }
+}
