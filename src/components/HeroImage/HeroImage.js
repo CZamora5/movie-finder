@@ -8,13 +8,13 @@ import './HeroImage.styles.scss';
 import background from '../../assets/background.jpg';
 
 export default function HeroImage(props) {
-  let url;
-  if (Array.isArray(props.image)) {
-    const urlArray = props.image.map(img => `url(${img})`);
-    url = urlArray.join(',');
-  } else {
-    url = `url(${props.image ?? background})`;
-  }
+  const url = background;
+  // if (Array.isArray(props.image)) {
+  //   const urlArray = props.image.map(img => `url(${img})`);
+  //   url = urlArray.join(',');
+  // } else {
+  //   url = `url(${props.image ?? background})`;
+  // }
   const navigate = useNavigate();
 
   if (props.children) {
