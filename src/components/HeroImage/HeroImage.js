@@ -8,7 +8,7 @@ import './HeroImage.styles.scss';
 import background from '../../assets/background.jpg';
 
 export default function HeroImage(props) {
-  const url = background;
+  const url = `url(${props.image ?? background})`;
   // if (Array.isArray(props.image)) {
   //   const urlArray = props.image.map(img => `url(${img})`);
   //   url = urlArray.join(',');
