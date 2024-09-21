@@ -15,7 +15,7 @@ import { API } from '../../services/api.js';
 
 // Images
 import homeImage from '../../assets/home.jpg';
-import homeImageLowRes from '../../assets/home-lower-quality.jpg';
+// import homeImageLowRes from '../../assets/home-lower-quality.jpg';
 
 // Styles
 import './Home.styles.scss';
