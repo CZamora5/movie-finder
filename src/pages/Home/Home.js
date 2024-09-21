@@ -67,7 +67,7 @@ export default function Home() {
 
   return (
     <main className="home">
-      <HeroImage image={[homeImage, homeImageLowRes]} bgPos="center right" bgColor="var(--clr-darkish-purple)" contentPos="center">
+      <HeroImage image={homeImage} bgPos="center right" bgColor="var(--clr-darkish-purple)" contentPos="center">
         <section className="home__hero">
           <h1 className="home__title">We have the perfect movie for you, start exploring and find it!</h1>
           <button onClick={() => navigate("search")} className="home__search-button">
